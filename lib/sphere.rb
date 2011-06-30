@@ -12,10 +12,12 @@ module Geometry
         super(*args)
 
         # Don't explicitly compare against nil, because nil will be passed to
-        # the center object ==() method.  Instead allow Ruby to tell us if
+        # the center object ==() method.  Instead allow Ruby to determine if
         # 'center' is falsy (nil).
 
+        # This would require special handling of 'nil' in Point::==().
         # self.center = Point.new(0,0) if (center == nil)
+
         self.center = Point.new(0,0) unless center
 
         raise RadiusMustBeNonNegative if (radius < 0)
