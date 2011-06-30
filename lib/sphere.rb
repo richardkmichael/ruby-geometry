@@ -9,13 +9,15 @@ module Geometry
 
   class Sphere < Struct.new(:radius, :center) do
       def initialize(*args)
-        puts "Args length: #{args.length}"
-        # if args.length = 2
-        #   my_center = args[1]
-        #   puts "My center = #{my_center}."
-        # end
         super(*args)
-        self.center = Point.new(0,0) if (center == nil)
+
+        # Don't explicitly compare against nil, because nil will be passed to
+        # the center object ==() method.  Instead allow Ruby to tell us if
+        # 'center' is falsy (nil).
+
+        # self.center = Point.new(0,0) if (center == nil)
+        self.center = Point.new(0,0) unless center
+
         raise RadiusMustBeNonNegative if (radius < 0)
       end
     end
