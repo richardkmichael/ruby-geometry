@@ -1,3 +1,13 @@
+NOTE:
+
+This branch contains a sphere, and hence is the start of 3D geometry.
+
+Thus the library should be modularized and properly abstracted.
+
+e.g. potentially Geometry::2D, Geometry::3D, but permit convenient interactions (lines on spheres, etc.)
+
+
+
 Geometry in Ruby
 ================
 
