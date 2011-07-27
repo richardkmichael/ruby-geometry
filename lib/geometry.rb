@@ -2,6 +2,7 @@ require 'point'
 require 'segment'
 require 'vector'
 require 'polygon'
+require 'rectangle'
 require 'line'
 
 module Geometry

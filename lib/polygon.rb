@@ -9,5 +9,6 @@ module Geometry
 
       edges << Segment.new(vertices.last, vertices.first)
     end
+    
   end
 end
