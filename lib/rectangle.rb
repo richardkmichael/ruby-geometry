@@ -1,5 +1,5 @@
 module Geometry
-  class Rectangle < Struct.new(:x= 0, :y= 0, :width= 0, :height= 0)
+  class Rectangle < Struct.new(:x, :y, :width, :height)
     
     def area
       (self.width - self.x)*(self.height - self.y) rescue 0
