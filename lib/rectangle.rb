@@ -1,8 +1,8 @@
 module Geometry
-  class Rectangle < Struct.new(:x, :y, :width, :height)
+  class Rectangle < Struct.new(:x= 0, :y= 0, :width= 0, :height= 0)
     
     def area
-      (self.width - self.x)*(self.height - self.y)
+      (self.width - self.x)*(self.height - self.y) rescue 0
     end
     
     def empty?
@@ -10,8 +10,7 @@ module Geometry
     end
     
     def intersection_with(rect)
-      void= Rectangle.new 0, 0, 0, 0
-      return void if rect.empty? || self.empty?
+      return Rectangle.new if rect.empty? || self.empty?
       l1, r1= x, x
       l2, r2= rect.x, rect.x
       t1, b1= y, y
@@ -19,13 +18,13 @@ module Geometry
       
       width < 0 ? l1+= width : r1+= width
       rect.width < 0 ? l2+= rect.width : r2+= rect.width
-      return void if l2 == r2
-      return void if (l1 >= r2 || l2 >= r1)
+      return Rectangle.new if l2 == r2
+      return Rectangle.new if (l1 >= r2 || l2 >= r1)
       height < 0 ? t1+= height : b1+= height
-      return void if t1 == b1
+      return Rectangle.new if t1 == b1
       rect.height < 0 ? t2+= rect.height : b2+= rect.height
-      return void if t2 == b2
-      return void if (t1 >= b2 || t2 >= b1)
+      return Rectangle.new if t2 == b2
+      return Rectangle.new if (t1 >= b2 || t2 >= b1)
 
       intersection= Rectangle.new
       intersection.x= [l1, l2].max;
@@ -36,7 +35,7 @@ module Geometry
     end
     
     def intersect_with?(rect)
-      self.intersection_area_with(rect) > 0
+      self.intersection_with(rect).empty?
     end
     
   end
