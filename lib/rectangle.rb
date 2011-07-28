@@ -10,7 +10,8 @@ module Geometry
     end
     
     def intersection_with(rect)
-      return nil if rect.empty? || self.empty?
+      void= Rectangle.new 0, 0, 0, 0
+      return void if rect.empty? || self.empty?
       l1, r1= x, x
       l2, r2= rect.x, rect.x
       t1, b1= y, y
@@ -18,13 +19,13 @@ module Geometry
       
       width < 0 ? l1+= width : r1+= width
       rect.width < 0 ? l2+= rect.width : r2+= rect.width
-      return nil if l2 == r2
-      return nil if (l1 >= r2 || l2 >= r1)
+      return void if l2 == r2
+      return void if (l1 >= r2 || l2 >= r1)
       height < 0 ? t1+= height : b1+= height
-      return nil if t1 == b1
+      return void if t1 == b1
       rect.height < 0 ? t2+= rect.height : b2+= rect.height
-      return nil if t2 == b2
-      return nil if (t1 >= b2 || t2 >= b1)
+      return void if t2 == b2
+      return void if (t1 >= b2 || t2 >= b1)
 
       intersection= Rectangle.new
       intersection.x= [l1, l2].max;
