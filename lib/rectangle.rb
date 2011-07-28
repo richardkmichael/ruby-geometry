@@ -2,7 +2,7 @@ module Geometry
   class Rectangle < Struct.new(:x, :y, :width, :height)
     
     def area
-      (self.width - self.x)*(self.height - self.y) rescue 0
+      (self.width - self.x).abs*(self.height - self.y).abs rescue 0
     end
     
     def empty?
