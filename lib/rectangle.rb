@@ -35,7 +35,7 @@ module Geometry
     end
     
     def intersect_with?(rect)
-      self.intersection_with(rect).empty?
+      !self.intersection_with(rect).empty?
     end
     
   end
