@@ -12,6 +12,8 @@ Defined geometry objects
   * Segment
 
   * Vector
+  
+  * Rectangle
 
   * Polygon
 
@@ -58,6 +60,10 @@ Already implemented algorithms
   * What x-value do lines intersect at? { Line.intersect_x }
 
   * What is the angle between two lines? { Line.angle_to }
+
+  * Rectangle area
+  
+  * Do rectangles intersect?
 
 
 Coming up
